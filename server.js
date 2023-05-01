@@ -21,7 +21,6 @@ var db
 
 // configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {
-  console.log('we outside !!!!!!')
   if (err) return console.log(err)
   db = database
   require('./app/routes.js')(app, passport, db);

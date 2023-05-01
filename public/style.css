@@ -1,7 +1,31 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
+  background-image: url('img/background.png');
+  background-size: cover;
+  /* background-image: url('img/diary.png') ; */
+  color: black;
 }
 img{
   height: 200px;
+}
+
+div .well{
+  background-color: aqua;
+  height: 500px;
+}
+
+div .leftbox{
+
+  height: 500px;
+  
+ 
+  
+
+}
+
+
+li {
+  font-size: 25px;
+  margin: 15px
 }
