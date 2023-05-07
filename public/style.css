@@ -29,3 +29,46 @@ li {
   font-size: 25px;
   margin: 15px
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+
+
+.message td:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message td:last-child i {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.fa-square-check {
+  color: #2ecc71;
+}
+
+.fa-dumpster {
+  color: #e74c3c;
+}
+
+.check {
+  font-size: 22px;
+  font-weight: bold;
+}

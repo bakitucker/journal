@@ -4,6 +4,7 @@
     <title>21 Savage Fan Site</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/4c83b50b1e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,28 +16,51 @@
         <h1>Welcome To Your Diary <%= user.local.email %> . Your Secret Is Safe With Me .</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
+    
 
     <div class="row">
         <div class="col-sm-6">
           <div class="leftbox">
           <h3>Journal Entries</h3>
-          <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
-            <li class="message">
-              <span><%= messages[i].name %></span>
-              <span><%= messages[i].msg %></span>
-            
-              <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-            </li>
-          <% } %>
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Mood</th>
+                <th>Entry</th>
+                <th>Self Reflected</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<messages.length; i++) {%>
+                <tr class="message">
+                  <td><%= messages[i].name %></td>
+                  <td><%= messages[i].mood %></td>
+                  <td><%= messages[i].msg %></td>
+                  <td><%= messages[i].check %></td>
+                  <td><i class="fa-regular fa fa-square-check"></i></td>
+                  <td><i class="fa-solid fa-dumpster"></i></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
 
           <h2>Add To Your Diary</h2>
         <% if (user.local.email) { %>
           <form action="/messages" method="POST">
-            <input type="date" value="" name="name">
+            <input type="date" value="" name="name" required>
+            <select name="mood" id="" required>
+              <option value="Happy">Happy</option>
+              <option value="Sad">Sad</option>
+              <option value="Tired">Tired</option>
+              <option value="Stressed">Stressed</option>
+              <option value="Angry">Angry</option>
+              <option value="Escatic">Escatic</option>
+              <option value="Hungry">Hungry</option>
+            </select>
 
-            <textarea rows = "5" cols = "30" name = "msg">
+            <textarea rows = "5" cols = "30" name = "msg" required>
          </textarea>
             <!-- <input type="text" placeholder="message" name="msg"
             rows="4" cols="50"> -->

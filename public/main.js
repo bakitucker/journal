@@ -1,7 +1,8 @@
 var thumbUp = document.getElementsByClassName("fa-thumbs-up");
 document.querySelector('.quoteButton').addEventListener('click', randomQuote)
-var trash = document.getElementsByClassName("fa-trash");
+var trash = document.getElementsByClassName("fa-dumpster");
 let quotes = document.querySelector('.showTheQuote')
+let checkBtn = document.getElementsByClassName('fa-regular fa-square-check')
 let myQuotes = [
   "You are capable of great things.",
   "Believe in yourself and all that you are.",
@@ -56,18 +57,20 @@ let myQuotes = [
 
 
 
-Array.from(thumbUp).forEach(function(element) {
+Array.from(checkBtn).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
+        const  mood = this.parentNode.parentNode.childNodes[3].innerText
+        const msg = this.parentNode.parentNode.childNodes[5].innerText
+        const check = this.parentNode.parentNode.childNodes[7].innerText
         fetch('messages', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
+            'mood': mood,
             'msg': msg,
-            'thumbUp':thumbUp
+            'check':check
           })
         })
         .then(response => {
@@ -90,8 +93,10 @@ function randomQuote() {
 
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].textContent
-        const msg = this.parentNode.parentNode.childNodes[3].textContent
+        const name = this.parentNode.parentNode.childNodes[1].innerText
+        const  mood = this.parentNode.parentNode.childNodes[3].innerText
+        const msg = this.parentNode.parentNode.childNodes[5].innerText
+        const ref = this.parentNode.parentNode.childNodes[7].innerText
         fetch('messages', {
           method: 'delete',
           headers: {
@@ -99,7 +104,10 @@ Array.from(trash).forEach(function(element) {
           },
           body: JSON.stringify({
             'name': name,
-            'msg': msg
+            'mood': mood,
+            'msg': msg,
+            'ref': ref
+
           })
         }).then(function (response) {
           window.location.reload()
